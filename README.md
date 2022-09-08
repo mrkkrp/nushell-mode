@@ -11,7 +11,22 @@ Emacs major mode for Nushell scripts.
 
 - Keyword highlight
 
-## Usage
+## Installation
+
+### Doom Emacs
+
+in `packages.el`
+
+``` commonlisp
+(package! nushell-mode :recipe (:host github :repo "azzamsa/nushell-mode"))
+```
+
+### straight.el
+
+``` commonlisp
+(straight-use-package
+ '(nushell-mode :type git :host github :repo "azzamsa/nushell-mode"))
+```
 
 ## Credits
 
