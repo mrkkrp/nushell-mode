@@ -18,7 +18,7 @@ Emacs major mode for Nushell scripts.
 in `packages.el`
 
 ``` commonlisp
-(package! nushell-mode :recipe (:host github :repo "azzamsa/nushell-mode"))
+(package! nushell-mode :recipe (:host github :repo "azzamsa/emacs-nushell"))
 ```
 
 ### straight.el
