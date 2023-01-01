@@ -25,7 +25,7 @@ in `packages.el`
 
 ``` commonlisp
 (straight-use-package
- '(nushell-mode :type git :host github :repo "azzamsa/nushell-mode"))
+ '(nushell-mode :type git :host github :repo "azzamsa/emacs-nushell"))
 ```
 
 ## Credits
