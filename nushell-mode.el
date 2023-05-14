@@ -583,7 +583,6 @@ If the value of this variable is non-nil, whenever a word in
 (define-derived-mode nushell-mode prog-mode "Nushell"
   "Major mode for editing nushell shell files."
   :syntax-table nushell-mode-syntax-table
-  (setq-local indent-line-function 'nushell-indent-line)
   (setq-local font-lock-defaults '(nushell-font-lock-keywords-1))
   (setq-local comment-start "# ")
   (setq-local comment-start-skip "#+[\t ]*"))
