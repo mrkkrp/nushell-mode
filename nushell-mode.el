@@ -1,9 +1,10 @@
 ;;; nushell-mode.el --- Major mode for nushell scripts  -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2023 Mark Karpov
 ;; Copyright (C) 2022 Azzam S.A
 
 ;; Author: Azzam S.A <vcs@azzamsa.com>
-;; Homepage: https://github.com/azzamsa/emacs-nushell
+;; Homepage: https://github.com/mrkkrp/nushell-mode
 ;; Keywords: Nushell, shell
 
 ;; Package-Version: 0.1.0
@@ -575,7 +576,6 @@ If the value of this variable is non-nil, whenever a word in
     (modify-syntax-entry ?$ "'" table)
     table)
   "Syntax table for `nushell-mode'.")
-
 
 ;;; Mode definition
 

@@ -1,11 +1,6 @@
-<div align="center">
-  <h1>Emacs Nushell</h1>
+# Nushell mode
 
-Emacs major mode for Nushell scripts.
-
-</div>
-
----
+![CI](https://github.com/mrkkrp/nushell-mode/workflows/CI/badge.svg?branch=master)
 
 ## Features
 
@@ -17,15 +12,15 @@ Emacs major mode for Nushell scripts.
 
 in `packages.el`
 
-``` commonlisp
-(package! nushell-mode :recipe (:host github :repo "azzamsa/emacs-nushell"))
+```emacs-lisp
+(package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
 ```
 
 ### straight.el
 
-``` commonlisp
+```emacs-lisp
 (straight-use-package
- '(nushell-mode :type git :host github :repo "azzamsa/emacs-nushell"))
+ '(nushell-mode :type git :host github :repo "mrkkrp/nushell-mode"))
 ```
 
 ## Credits
