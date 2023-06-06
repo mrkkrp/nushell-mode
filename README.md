@@ -1,5 +1,6 @@
 # Nushell mode
 
+[![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.txt)
 ![CI](https://github.com/mrkkrp/nushell-mode/workflows/CI/badge.svg?branch=master)
 
 ## Features
@@ -26,3 +27,10 @@ in `packages.el`
 ## Credits
 
 - [Tony Wang's Emacs Fish Mode](https://github.com/wwwjfy/emacs-fish)
+
+## License
+
+Copyright © 2023–present Mark Karpov
+Copyright © 2022 Azzam S.A
+
+Distributed under GNU GPL, version 3.
