@@ -5,10 +5,10 @@
 
 ;; Author: Azzam S.A <vcs@azzamsa.com>
 ;; Homepage: https://github.com/mrkkrp/nushell-mode
-;; Keywords: Nushell, shell
+;; Keywords: languages, unix
 
 ;; Package-Version: 0.1.0
-;; Package-Requires: ((emacs "24"))
+;; Package-Requires: ((emacs "24.4"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -52,11 +52,6 @@
   "Controls auto-indent feature.
 If the value of this variable is non-nil, whenever a word in
 `nushell-auto-indent-trigger-keywords' is typed, it is indented instantly.")
-
-(unless (fboundp 'setq-local)
-  (defmacro setq-local (var val)
-    "Set variable VAR to value VAL in current buffer."
-    `(set (make-local-variable ',var) ,val)))
 
 ;;; Syntax highlighting
 ;;; To get the commands, use `help commands | get name | | save --raw tmp'
@@ -504,8 +499,7 @@ If the value of this variable is non-nil, whenever a word in
    "wrap"
    "z"
    "zi"
-   "zip"
-   ))
+   "zip"))
 
 (defconst nushell-keywords
   (list
@@ -540,8 +534,7 @@ If the value of this variable is non-nil, whenever a word in
    "bit-shl"
    "bit-shr"
    "starts-with"
-   "ends-with"
-   ))
+   "ends-with"))
 
 ;;; Add `nushell-builtin' and `nushell-keywords' to
 ;;; font-lock

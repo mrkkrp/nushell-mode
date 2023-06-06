@@ -6,14 +6,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1686051315,
-        "narHash": "sha256-UjOVXp45xwxBXJuKQHmQSAdN/5mYWw1wJdO2RDG2TwY=",
-        "type": "git",
-        "url": "file:///home/mark/projects/mrkkrp/emacs-package-flake"
+        "lastModified": 1686056032,
+        "narHash": "sha256-t8KpfSP3jnpoHU5orx5Cq5yFeFTbgh2a3WUILoLL3to=",
+        "owner": "mrkkrp",
+        "repo": "emacs-package-flake",
+        "rev": "a27c6af69e056fc6e0f23708a21ab3f9a7e82938",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/mark/projects/mrkkrp/emacs-package-flake"
+        "owner": "mrkkrp",
+        "repo": "emacs-package-flake",
+        "type": "github"
       }
     },
     "flake-utils": {
