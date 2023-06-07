@@ -583,6 +583,7 @@ If the value of this variable is non-nil, whenever a word in
 ;;;###autoload
 ;;; Specify major mode by file extension .nu
 (add-to-list 'auto-mode-alist '("\\.nu\\'" . nushell-mode))
+;;;###autoload
 ;;; Specify major mode by shebang
 (add-to-list 'interpreter-mode-alist '("nu" . nushell-mode))
 
