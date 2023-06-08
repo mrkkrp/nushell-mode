@@ -87,6 +87,7 @@ If the value of this variable is non-nil, whenever a word in
     "let"
     "let-env"
     "mut"
+    "not"
     "or")
   "Nushell keywords.
 
