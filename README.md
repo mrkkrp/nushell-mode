@@ -30,7 +30,7 @@ in `packages.el`
 
 ## License
 
-Copyright © 2023–present Mark Karpov
+Copyright © 2023–present Mark Karpov\
 Copyright © 2022 Azzam S.A
 
 Distributed under GNU GPL, version 3.
