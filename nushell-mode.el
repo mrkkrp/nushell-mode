@@ -102,8 +102,6 @@ a keyword would result in visual noise.")
   '((t :inverse-video t :inherit font-lock-preprocessor-face))
   "Face used to display elements that should attract attention.")
 
-;;; Add `nushell-builtin' and `nushell-keywords' to
-;;; font-lock
 (defconst nushell-font-lock-keywords
   `(
 
@@ -136,8 +134,6 @@ a keyword would result in visual noise.")
     table)
   "Syntax table for `nushell-mode'.")
 
-;;; Mode definition
-
 ;;;###autoload
 (define-derived-mode nushell-mode prog-mode "Nushell"
   "Major mode for editing nushell shell files."
@@ -147,10 +143,9 @@ a keyword would result in visual noise.")
   (setq-local comment-start-skip "#+[\t ]*"))
 
 ;;;###autoload
-;;; Specify major mode by file extension .nu
 (add-to-list 'auto-mode-alist '("\\.nu\\'" . nushell-mode))
+
 ;;;###autoload
-;;; Specify major mode by shebang
 (add-to-list 'interpreter-mode-alist '("nu" . nushell-mode))
 
 (provide 'nushell-mode)
