@@ -10,6 +10,11 @@
 
 ## Installation
 
+### MELPA
+
+The package is available via MELPA, so you can just type `M-x
+package-install RET nushell-mode RET`.
+
 ### Doom Emacs
 
 in `packages.el`
