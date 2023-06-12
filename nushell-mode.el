@@ -1,4 +1,4 @@
-;;; nushell-mode.el --- Major mode for nushell scripts  -*- lexical-binding: t; -*-
+;;; nushell-mode.el --- Major mode for Nushell scripts  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2023 Mark Karpov
 ;; Copyright (C) 2022 Azzam S.A
@@ -27,11 +27,7 @@
 
 ;;; Commentary:
 
-;; A very basic version of major mode for nushell shell scripts.
-;; Current features:
-;;
-;;  - keyword highlight
-;;
+;; A very basic version of major mode for Nushell shell scripts.
 
 ;;; Code:
 

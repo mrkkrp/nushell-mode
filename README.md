@@ -6,7 +6,7 @@
 
 ## Features
 
-- Keyword highlight
+* Syntax highlighting
 
 ## Installation
 
