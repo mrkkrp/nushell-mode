@@ -1,6 +1,7 @@
 # Nushell mode
 
 [![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.txt)
+[![MELPA](https://melpa.org/packages/nushell-mode-badge.svg)](https://melpa.org/#/nushell-mode)
 ![CI](https://github.com/mrkkrp/nushell-mode/workflows/CI/badge.svg?branch=master)
 
 ## Features
