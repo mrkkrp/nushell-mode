@@ -1,13 +1,13 @@
 ;;; nushell-mode.el --- Major mode for Nushell scripts  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2023 Mark Karpov
+;; Copyright (C) 2023–2026 Mark Karpov
 ;; Copyright (C) 2022 Azzam S.A
 
 ;; Author: Azzam S.A <vcs@azzamsa.com>
 ;; Homepage: https://github.com/mrkkrp/nushell-mode
 ;; Keywords: languages, unix
 
-;; Package-Version: 0.1.0
+;; Package-Version: 0.2.0
 ;; Package-Requires: ((emacs "24.4"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
@@ -31,10 +31,6 @@
 
 ;;; Code:
 
-(require 'cl-lib)
-(eval-when-compile
-  (require 'subr-x))
-
 (defgroup nushell nil
   "Nushell shell support."
   :group 'languages
@@ -48,43 +44,33 @@
   :type 'integer
   :safe 'integerp)
 
-(defvar nushell-enable-auto-indent nil
-  "Controls auto-indent feature.
-If the value of this variable is non-nil, whenever a word in
-`nushell-auto-indent-trigger-keywords' is typed, it is indented instantly.")
-
-(defconst nushell-builtins
-  '("bit-and"
-    "bit-or"
-    "bit-shl"
-    "bit-shr"
-    "bit-xor"
-    "ends-with"
-    "false"
-    "fdiv"
-    "mod"
-    "not-in"
-    "null"
-    "starts-with"
-    "true"
-    "xor")
-  "Nushell built-ins.")
-
 (defconst nushell-keywords
   '("alias"
-    "and"
+    "break"
+    "collect"
+    "const"
+    "continue"
     "def"
-    "def-env"
     "else"
     "export"
+    "export-env"
     "extern"
     "for"
+    "hide"
     "if"
     "let"
-    "let-env"
+    "loop"
+    "match"
+    "module"
     "mut"
-    "not"
-    "or"
+    "overlay"
+    "return"
+    "source"
+    "source-env"
+    "try"
+    "catch"
+    "use"
+    "where"
     "while")
   "Nushell keywords.
 
@@ -93,7 +79,221 @@ considered a built-in or a keyword in Nushell.  We follow the
 principle that keywords define the structure and organization of
 a program to a certain extent and thus deserve special highlighting
 in order to aid reading.  Highlighting every built-in command as
-a keyword would result in visual noise.")
+a keyword would result in visual noise.
+
+The list mirrors the commands that Nushell itself reports with a
+command type of \"keyword\" (see the output of \"help commands\"),
+plus \"else\" and \"catch\", which are part of the \"if\" and \"try\"
+control structures.")
+
+(defconst nushell-operators
+  '("and"
+    "bit-and"
+    "bit-or"
+    "bit-shl"
+    "bit-shr"
+    "bit-xor"
+    "ends-with"
+    "has"
+    "in"
+    "mod"
+    "not"
+    "not-has"
+    "not-in"
+    "or"
+    "starts-with"
+    "xor")
+  "Nushell word-form operators.
+
+These are the operators that are spelled as words rather than as
+punctuation and thus need to be highlighted by matching them as
+identifiers.")
+
+(defconst nushell-constants
+  '("true"
+    "false"
+    "null")
+  "Nushell literal constants.")
+
+(defconst nushell-types
+  '("any"
+    "binary"
+    "bool"
+    "cell-path"
+    "closure"
+    "datetime"
+    "duration"
+    "error"
+    "filesize"
+    "float"
+    "glob"
+    "int"
+    "list"
+    "nothing"
+    "number"
+    "range"
+    "record"
+    "string"
+    "table")
+  "Nushell type names as used in command signatures.")
+
+(defconst nushell-builtins
+  '("all"
+    "ansi"
+    "any"
+    "append"
+    "ast"
+    "attr"
+    "bits"
+    "bytes"
+    "cal"
+    "cd"
+    "char"
+    "chunk-by"
+    "chunks"
+    "clear"
+    "columns"
+    "commandline"
+    "compact"
+    "complete"
+    "config"
+    "cp"
+    "date"
+    "debug"
+    "decode"
+    "default"
+    "describe"
+    "detect"
+    "do"
+    "drop"
+    "du"
+    "each"
+    "echo"
+    "encode"
+    "enumerate"
+    "error"
+    "every"
+    "exec"
+    "exit"
+    "explain"
+    "explore"
+    "fill"
+    "filter"
+    "find"
+    "first"
+    "flatten"
+    "format"
+    "from"
+    "generate"
+    "get"
+    "glob"
+    "grid"
+    "group-by"
+    "hash"
+    "headers"
+    "help"
+    "hide-env"
+    "histogram"
+    "history"
+    "http"
+    "ignore"
+    "input"
+    "insert"
+    "inspect"
+    "interleave"
+    "into"
+    "is-admin"
+    "is-empty"
+    "is-not-empty"
+    "is-terminal"
+    "items"
+    "job"
+    "join"
+    "keybindings"
+    "kill"
+    "last"
+    "length"
+    "lines"
+    "load-env"
+    "ls"
+    "math"
+    "merge"
+    "metadata"
+    "mkdir"
+    "mktemp"
+    "move"
+    "mv"
+    "nu-check"
+    "nu-highlight"
+    "open"
+    "panic"
+    "par-each"
+    "parse"
+    "path"
+    "plugin"
+    "port"
+    "prepend"
+    "print"
+    "ps"
+    "query"
+    "random"
+    "reduce"
+    "reject"
+    "rename"
+    "reverse"
+    "rm"
+    "roll"
+    "rotate"
+    "run-external"
+    "save"
+    "schema"
+    "scope"
+    "select"
+    "seq"
+    "shuffle"
+    "skip"
+    "sleep"
+    "slice"
+    "sort"
+    "sort-by"
+    "split"
+    "start"
+    "stor"
+    "str"
+    "sys"
+    "table"
+    "take"
+    "tee"
+    "term"
+    "timeit"
+    "to"
+    "touch"
+    "transpose"
+    "tutor"
+    "ulimit"
+    "umask"
+    "uname"
+    "uniq"
+    "uniq-by"
+    "update"
+    "upsert"
+    "url"
+    "values"
+    "version"
+    "view"
+    "watch"
+    "which"
+    "whoami"
+    "window"
+    "with-env"
+    "wrap"
+    "zip")
+  "Nushell built-in commands.
+
+This list mirrors the single-word commands that Nushell reports
+with a command type of \"built-in\" (see the output of \"help
+commands\").  Multi-word subcommands such as \"str join\" or \"path
+basename\" are highlighted via their leading word.")
 
 (defface nushell-pay-attention-face
   '((t :inverse-video t :inherit font-lock-preprocessor-face))
@@ -102,11 +302,20 @@ a keyword would result in visual noise.")
 (defconst nushell-font-lock-keywords
   `(
 
-    ;; Builtins
-    (,(regexp-opt nushell-builtins 'symbols) . font-lock-builtin-face)
-
     ;; Keywords
     (,(regexp-opt nushell-keywords 'symbols) . font-lock-keyword-face)
+
+    ;; Word-form operators
+    (,(regexp-opt nushell-operators 'symbols) . font-lock-keyword-face)
+
+    ;; Constants
+    (,(regexp-opt nushell-constants 'symbols) . font-lock-constant-face)
+
+    ;; Types
+    (,(regexp-opt nushell-types 'symbols) . font-lock-type-face)
+
+    ;; Builtins
+    (,(regexp-opt nushell-builtins 'symbols) . font-lock-builtin-face)
 
     ;; Variables
     ("\\$[[:word:]_\\.-]+" . font-lock-variable-name-face)
@@ -114,8 +323,9 @@ a keyword would result in visual noise.")
     ;; String interpolation (beginning of string)
     ("\\$" . 'nushell-pay-attention-face)
 
-    ;; Redirections
-    ("\\(out\\|err\\|out\\+err\\|err\\+out\\)>" . 'nushell-pay-attention-face)
+    ;; Redirections (long and short forms, plus appending variants)
+    ("\\(?:out\\|err\\|o\\|e\\)\\(?:\\+\\(?:out\\|err\\|o\\|e\\)\\)?>>?"
+     . 'nushell-pay-attention-face)
 
     ;; Using system binaries instead of Nushell built-ins
     ("\\(\\^\\)\\(?:[[:word:]_-]+\\)" 1 'nushell-pay-attention-face)))
