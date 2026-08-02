@@ -90,8 +90,8 @@ If the value of this variable is non-nil, whenever a word in
 
 It is difficult to tell whether a certain word should be
 considered a built-in or a keyword in Nushell.  We follow the
-principle that keywords define structure and organization of
-program to certain extent and thus deserve special highlighting
+principle that keywords define the structure and organization of
+a program to a certain extent and thus deserve special highlighting
 in order to aid reading.  Highlighting every built-in command as
 a keyword would result in visual noise.")
 

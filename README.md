@@ -17,7 +17,7 @@ package-install RET nushell-mode RET`.
 
 ### Doom Emacs
 
-in `packages.el`
+In `packages.el`:
 
 ```emacs-lisp
 (package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
