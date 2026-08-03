@@ -4,6 +4,22 @@
 [![MELPA](https://melpa.org/packages/nushell-mode-badge.svg)](https://melpa.org/#/nushell-mode)
 [![CI](https://github.com/mrkkrp/nushell-mode/actions/workflows/ci.yaml/badge.svg)](https://github.com/mrkkrp/nushell-mode/actions/workflows/ci.yaml)
 
+> [!IMPORTANT]
+> **This package is deprecated in favor of
+> [`nushell-ts-mode`](https://github.com/herbertjones/nushell-ts-mode).**
+>
+> `nushell-ts-mode` uses Tree-sitter and is a functional superset of this
+> package: in addition to more accurate syntax highlighting it provides
+> indentation, imenu, structural navigation, completion-at-point, and Org
+> Babel support. If you are on Emacs 29+ and can install the `nu`
+> Tree-sitter grammar, you should prefer it.
+>
+> `nushell-mode` remains available as a lightweight, zero-dependency
+> option: it works on Emacs 24.4+ and needs no Tree-sitter grammar, only
+> syntax highlighting. It receives maintenance updates only (keeping the
+> keyword and built-in lists current with new Nushell releases); no new
+> features are planned.
+
 ## Features
 
 * Syntax highlighting
